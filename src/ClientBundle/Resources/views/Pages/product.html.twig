@@ -1,0 +1,190 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{item.name}}{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/flexslider.css')}}">{% endblock %}
+{% block content %}
+{% if item is not empty %}
+ <div class="page-heading" style="background-image: url({{asset('')}}assets/images/Wide/5.jpg);">
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <ul>
+              <li class="home"> <a href="{{path('client_homepage')}}" title="Go to Home Page">Home</a> <span>—› </span> </li>
+              <li class="home"> <a href="{{path('client_products' , {'categoryid' : 0 } )}}" title="Go to Home Page">Products</a> </li>
+            </ul>
+          </div>
+          <!--col-xs-12-->
+        </div>
+        <!--row-->
+      </div>
+      <!--container-->
+    </div>
+    <div class="page-title">
+      <h2>{{item.parentid.name}}</h2>
+    </div>
+  </div>
+  <!-- BEGIN Main Container -->
+  <div class="main-container col1-layout wow bounceInUp animated">
+    <div class="main">
+      <div class="col-main">
+        <!-- Endif Next Previous Product -->
+        <div class="product-view wow bounceInUp animated" itemscope="" itemtype="http://schema.org/Product" itemid="#product_base">
+          <div id="messages_product_view"></div>
+          <!--product-next-prev-->
+          <div class="product-essential container">
+            <div class="row">
+              <div class="product-next-prev"> <a class="product-next" title="Next" href="#"><span></span></a> <a class="product-prev" title="Previous" href="#"><span></span></a> </div>
+              <form action="" method="post" id="product_addtocart_form">
+                <!--End For version 1, 2, 6 -->
+                <!-- For version 3 -->
+                <div class="product-img-box col-sm-6 col-xs-12">
+                  <div class="new-label new-top-left"> New </div>
+                  <div class="product-image">
+                    <div class="large-image">
+                       {% if item.images is not empty %}
+                            <a href="{{path('client_products' , {'categoryid' : item.id } )}}" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> 
+                              <img src="{{asset('assets/images/')}}{{item.images[0].url}}"> 
+                            </a>
+                       {% endif %}
+                      </div>
+                    <div class="flexslider flexslider-thumb">
+                      <ul class="previews-list slides">
+                        {% for image in item.images %}
+                        <li>
+                          <a href='{{asset('assets/images/')}}{{image.url}}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{{asset('assets/images/')}}{{image.url}}' ">  <img src="{{asset('assets/images/')}}{{image.url}}" alt = "Thumbnail 1"/>
+                          </a>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- end: more-images -->
+                </div>
+                <!--End For version 1,2,6-->
+                <!-- For version 3 -->
+                <div class="product-shop col-sm-6 col-xs-12">
+                
+                  <div class="product-name">
+                    <h1 itemprop="name">{{item.name}}</h1>
+                  </div>
+                
+                  <div class="short-description">
+                    <h2>Quick Overview</h2>
+                    <p  style="text-align:justify;">{{item.Description}}</p>
+                    <b>Cultivating Months:</b>
+                    <p>{% for month in item.months %} {{month.name}} {% if loop.index < item.months|length   %}- {% endif %}  {% endfor %} </p>
+                  </div>
+                  <div class="table-responsive">
+                  <table class="data-table table-striped" id="my-orders-table">
+                    
+                    <thead>
+                      <tr class="first last">
+                        {% if item.weights[0].countpercartoon|length  > item.weights[1].countpercartoon|length  %}
+                        <th colspan ="{{item.weights[0].countpercartoon|length + 1 }}">Count per Cartoon </th>
+                      {% else %}
+                        <th colspan ="{{item.weights[1].countpercartoon|length + 1 }}">Count per Cartoon </th>
+                      {% endif %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for weight in item.weights %}
+                        {% if loop.index % 2 == 0 %}
+                        <tr class="first odd">
+                          <td><span class="price">{{weight.name}}</span></td>
+                          {% for count in weight.countpercartoon %}
+                            <td>{{count}}</td>
+                          {% endfor %}
+                         </tr>
+                       {% else %}
+                        <tr class="even">
+                          <td><span class="price">{{weight.name}}</span></td>
+                          {% for count in weight.countpercartoon %}
+                            <td>{{count}}</td>
+                          {% endfor %}
+                        </tr>
+                        {% endif %}
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
+                </div>
+                <!--table-responsive--> 
+                </div>
+                <!--product-shop-->
+                <!--Detail page static block for version 3-->
+              </form>
+            </div>
+          </div>
+        {% if relateditems is not empty and relateditems|length != 1 %}
+          <div class="box-additional">
+            <!-- BEGIN RELATED PRODUCTS -->
+            <div class="related-pro container">
+              <div class="slider-items-products">
+                <div class="new_title center">
+                  <h2>Related Products</h2>
+                </div>
+                <div id="related-slider" class="product-flexslider hidden-buttons">
+                  <div class="slider-items slider-width-col4 products-grid">
+                    {% for ite in relateditems %}
+                      {% if ite.id != item.id %}
+                        <div class="item">
+                            <div class="item-inner">
+                              <div class="item-img">
+                                <div class="item-img-info"><a href="{{path('client_products' , {'categoryid' : ite.id } )}}" title="{{ite.name}}" class="product-image"><img src="{{asset('assets/images/')}}{{ite.images[0].url}}" alt="{{ite.name}}"></a>
+                                  {# <div class="new-label new-top-left">New</div> #}
+                                  <div class="item-box-hover">
+                                    <div class="box-inner">
+                                      <div class="product-detail-bnt"><a href="{{path('client_products' , {'categoryid' : ite.id } )}}" title="{{ite.name}}"  class="button detail-bnt" type="button">
+                                        <span>Quick View</span></a></div>
+                                   </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="item-info">
+                                <div class="info-inner">
+                                  <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">{{ite.name}}</a> </div>
+                                  <div class="item-content">
+                                    <div class="rating">
+                                    
+                                    </div>
+                                 
+                                    <div class="add_cart">
+                                        <a href="{{path('client_products' , {'categoryid' : ite.id } )}}" title="{{ite.name}}">
+                                         <button class="button" type="button"><span>View More</span></button>
+                                        </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                     <!-- End Item --> 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end related product -->
+            <br>
+          </div>
+        {% endif %}
+          <!-- end related product -->
+        </div>
+        <!--box-additional-->
+        <!--product-view-->
+      </div>
+    </div>
+    <!--col-main-->
+  </div>
+  <!--main-container-->
+</div>
+<!--col1-layout-->
+{% else %}
+  No Product Available
+{% endif %}
+{% endblock %}
+{% block javascripts %}
+  <script type="text/javascript" src="{{asset('assets/js/jquery.flexslider.js')}}"></script>
+  <script type="text/javascript" src="{{asset('assets/js/cloud-zoom.js')}}"></script>
+{% endblock %}

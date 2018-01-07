@@ -1,0 +1,143 @@
+{% extends '::base.html.twig' %}
+{% block title %}Fruits & Season{% endblock %}
+{% block menu8 %} active {% endblock %}
+{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/flexslider.css')}}">{% endblock %}
+{% block content %}
+
+ <div class="page-heading"  style="background-image: url({{asset('')}}assets/images/Wide/2.jpg);">
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <ul>
+              <li class="home"> <a href="{{path('client_homepage')}}" title="Go to Home Page">Home</a> <span>—› </span> </li>
+              <li class="home"> <a  title="Fruits">Fruits & Season</a> <span>—› </span> </li>
+              
+            </ul>
+          </div>
+          <!--col-xs-12-->
+        </div>
+        <!--row-->
+      </div>
+      <!--container-->
+    </div>
+    <div class="page-title">
+      <h2>Fruits & Season </h2>
+    </div>
+  </div>
+  <!-- BEGIN Main Container -->
+  <div class="main-container col1-layout wow bounceInUp animated">
+    <div class="main">
+      <div class="col-main">
+        <!-- Endif Next Previous Product -->
+        <div class=" product-view wow bounceInUp animated" itemscope="" itemtype="http://schema.org/Product" itemid="#product_base">
+          <div id="messages_product_view"></div>
+          <!--product-next-prev-->
+            {% for item in items %}
+              {% if loop.index != 8  %}
+                <div class="box-additional">
+                  <!-- BEGIN RELATED PRODUCTS -->
+                  <div class="related-pro container">
+                    <div class="slider-items-products">
+                      <div class="new_title center">
+                      {% if loop.index == 1  %}
+                        <h2>January </h2>
+                      {% endif %}
+                       {% if loop.index == 2  %}
+                        <h2>Fenruary </h2>
+                      {% endif %}
+                       {% if loop.index == 3  %}
+                        <h2>March </h2>
+                      {% endif %}
+                       {% if loop.index == 4  %}
+                        <h2>April </h2>
+                      {% endif %}
+                       {% if loop.index == 5  %}
+                        <h2>May </h2>
+                      {% endif %}
+                       {% if loop.index == 6  %}
+                        <h2>June </h2>
+                      {% endif %}
+                       {% if loop.index == 7  %}
+                        <h2>July </h2>
+                      {% endif %}
+                       {% if loop.index == 8  %}
+                        <h2>August </h2>
+                      {% endif %}
+                       {% if loop.index == 9  %}
+                        <h2>September </h2>
+                      {% endif %}
+                       {% if loop.index == 10  %}
+                        <h2>October </h2>
+                      {% endif %}
+                       {% if loop.index == 11  %}
+                        <h2>November </h2>
+                      {% endif %}
+                       {% if loop.index == 12  %}
+                        <h2>December </h2>
+                      {% endif %}
+                      </div>
+                      <div id="related-slider" class="product-flexslider hidden-buttons">
+                        <div class="slider-items slider-width-col4 products-grid">
+                          {% for ite in item  %}
+                            
+                              <div class="item">
+                                  <div class="item-inner">
+                                    <div class="item-img">
+                                      <div class="item-img-info"><a href="{{path('client_products' , {'categoryid' : ite.id } )}}" title="{{ite.name}}" class="product-image"><img src="{{asset('assets/images/')}}{{ite.images[0].Url}}" alt="{{ite.name}}"></a>
+                                        {# <div class="new-label new-top-left">New</div> #}
+                                        <div class="item-box-hover">
+                                          <div class="box-inner">
+                                            <div class="product-detail-bnt"><a href="{{path('client_products' , {'categoryid' : ite.id } )}}" title="{{ite.name}}" class="button detail-bnt" type="button"><span>Quick View</span></a></div>
+                                          
+                                            
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="item-info">
+                                      <div class="info-inner">
+                                        <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">{{ite.name(5)}}</a> </div>
+                                        <div class="item-content">
+                                          <div class="rating">
+                                           
+                                          </div>
+                                        
+                                          <div class="add_cart">
+                                              <a href="{{path('client_products' , {'categoryid' : ite.id } )}}" title="{{ite.name}}">
+                                               <button class="button" type="button"><span>View More</span></button>
+                                              </a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                            
+                          {% endfor %}
+                           <!-- End Item --> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end related product -->
+                </div>
+               {% endif %}
+            {% endfor %}
+          <!-- end related product -->
+        </div>
+        <!--box-additional-->
+        <!--product-view-->
+      </div>
+    </div>
+    <!--col-main-->
+  </div>
+  <!--main-container-->
+</div>
+<!--col1-layout-->
+
+{% endblock %}
+{% block javascripts %}
+  <script type="text/javascript" src="{{asset('assets/js/jquery.flexslider.js')}}"></script>
+  <script type="text/javascript" src="{{asset('assets/js/cloud-zoom.js')}}"></script>
+{% endblock %}

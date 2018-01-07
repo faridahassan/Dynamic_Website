@@ -1,0 +1,181 @@
+{% extends '::base.html.twig' %}
+{% block title %}Products{% endblock %}
+{% block menu3 %} active {% endblock %}
+{% block content %}
+{% if items is not empty %}
+<div class="page-heading" style="background-image: url({{asset('')}}assets/images/Wide/2.jpg);" >
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home">
+             	<a href="{{path('client_homepage')}}" title="Go to Home Page">Home</a> <span>—› </span>
+            </li>
+            <li class="category1599"> 
+            	<a href="{{path('client_products' , {'categoryid' : 0 } )}}"  title="">Products</a> 
+            	{% if items is not empty and items[0].parentid != NULL  %}<span>—›  </span> {% endif %}
+            </li>
+             {% if items is not empty and items[0].parentid != NULL and items[0].parentid.parentid == NULL %}
+              <li class="category1601">
+               <a href="{{path('client_products' , {'categoryid' :  items[0].parentid } )}}"  title="">{{items[0].parentid.name}}</a> 
+               <span>—› </span>
+              </li>
+            {% endif %}
+            {% if items is not empty and items[0].parentid != NULL and items[0].parentid.parentid != NULL  %} 
+            <li class="category1600">
+           		 <a href="{{path('client_products' , {'categoryid' : items[0].parentid.parentid } )}}"  title="">{{items[0].parentid.parentid.name}}</a> 
+           		 <span>—› </span> 
+       		  </li>
+           	{% endif %}
+           
+          </ul>
+        </div>
+        <!--col-xs-12--> 
+      </div>
+      <!--row--> 
+    </div>
+    <!--container--> 
+  </div>
+  <div class="page-title">
+    <h2>
+     {% if items is not empty and  items[0].parentid != NULL and items[0].parentid.parentid != NULL  %} 
+      {{items[0].parentid.name}}
+     {% elseif items is not empty and  items[0].parentid != NULL and items[0].parentid.parentid == NULL  %} 
+      {{items[0].parentid.name}} 
+     {% elseif items is not empty and  items[0].parentid == NULL  %} 
+      Products
+     {% endif %}
+    </h2>
+  </div>
+</div>
+<!--breadcrumbs--> 
+<!-- BEGIN Main Container col2-left -->
+<section class="main-container col2-left-layout bounceInUp animated"> 
+  <!-- For version 1, 2, 3, 8 --> 
+  <!-- For version 1, 2, 3 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-main col-sm-9 col-sm-push-3 product-grid">
+      <div class="pro-coloumn">
+        <article class="col-main">
+          <div class="toolbar">
+            <div class="page-title">
+               <h2>{% if items is not empty and   items[0].parentid != NULL and items[0].parentid.parentid != NULL  %} {{items[0].parentid.name}} {% endif %}</h2>
+            </div>
+            
+          </div>
+          <div class="category-products">
+            <ul class="products-grid">
+            	
+            {% for item in items %}
+            
+                <li class="item col-lg-4 col-md-3 col-sm-4 col-xs-6">
+	              	<div class="item-inner">
+                      <div class="item-img">
+                        <div class="item-img-info">
+                          <a href="{{path('client_products' , {'categoryid' : item.id } )}}" title="{{item.name}}" >
+                            {% if item.images is not empty and item.images[0].url != "empty.png" %}
+                              <img src="{{asset('assets/images/')}}{{item.images[0].url}}" width="20%" height="20%" max-height="250px" alt="{{item.name}}">
+                            <!---- Fruits -->
+                            {% elseif item.parentid == NULL and  item.id == 1 %}
+                               <img src="{{asset('assets/images/fruits.jpg')}}" width="20%" height="20%" max-height="250px" alt="{{item.name}}">
+                             <!---- Vegtables -->
+                             {% elseif item.parentid == NULL and item.id == 2 %}
+                               <img src="{{asset('assets/images/vegetables.jpg')}}" width="20%" max-height="250px" height="20%" alt="{{item.name}}">
+                            {% else %}
+                               <img src="{{asset('assets/images/product-img.jpg')}}" width="20%" height="20%" max-height="250px" alt="{{item.name}}">
+                            {% endif %}
+                          </a>
+                        
+                        </div>
+                      </div>
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title"><a href="{{path('client_products' , {'categoryid' : item.id } )}}" title="{{item.name}}">{{item.name}}</a> </div>
+                          <div class="item-content">
+	                          	<div class="add_cart">
+	                                <a href="{{path('client_products' , {'categoryid' : item.id } )}}" title="{{item.name}}">
+	                                	<button class="button" type="button"><span>View More</span></button>
+	                                </a>
+	                          	</div>
+                          </div>
+                        </div>
+                      </div>
+	                </div>
+	              </li>
+              {% endfor %}   
+             
+            </ul>
+          </div>
+        </article>
+	     </div>
+        <!--	///*///======    End article  ========= //*/// --> 
+      </div>
+      <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow bounceInUp animated"> 
+        <!-- BEGIN SIDE-NAV-CATEGORY -->
+        <div class="side-nav-categories">
+          <div class="block-title"> Categories </div>
+          <!--block-title--> 
+          <!-- BEGIN BOX-CATEGORY -->
+          <div class="box-content box-category">
+            <ul>
+                <li> 
+                      <a class="active" href="{{path('client_products' , {'categoryid' : 1 } )}}">Fruits</a> 
+                      <span class="subDropdown minus"></span>
+                      {% for item in itemsSidebar %}
+                        {% if item.parentid != NULL and item.parentid.id == 1  %}
+                            {# {{dump(item )}} #}
+                              {% set previous_previous_parent = item.id %}
+                              <ul class="level0_415" style="display:block">
+                               <li>
+                                <a href="{{path('client_products' , {'categoryid' : item.id } )}}"> {{item.name}} </a>
+                                {# <span class="subDropdown plus"></span> #}
+                                {#  {% if  item.parentid != NULL and  item.parentid.id == previous_previous_parent %}
+                                <ul class="level1" style="display:none">
+                                  <li> <a href="{{path('client_products' , {'categoryid' : item.id } )}}"><span>{{item.name}}</span></a> </li>
+                                </ul>
+                                 {% endif %}  #}
+                              </li>
+                              </ul>
+                            {% endif %} 
+                       {% endfor %} 
+                  </li>
+                  <li> 
+                      <a class="active" href="{{path('client_products' , {'categoryid' : 2 } )}}">Vegtables</a> 
+                      <span class="subDropdown minus"></span>
+                      {% for item in itemsSidebar %}
+                        {% if item.parentid != NULL and item.parentid.id == 2  %}
+                            {# {{dump(item )}} #}
+                              {% set previous_previous_parent = item.id %}
+                              <ul class="level0_415" style="display:block">
+                               <li>
+                                <a href="{{path('client_products' , {'categoryid' : item.id } )}}"> {{item.name}} </a>
+                                {# <span class="subDropdown plus"></span> #}
+                                {#  {% if  item.parentid != NULL and  item.parentid.id == previous_previous_parent %}
+                                <ul class="level1" style="display:none">
+                                  <li> <a href="{{path('client_products' , {'categoryid' : item.id } )}}"><span>{{item.name}}</span></a> </li>
+                                </ul>
+                                 {% endif %}  #}
+                              </li>
+                              </ul>
+                            {% endif %} 
+                       {% endfor %} 
+                  </li>
+              </ul>
+          </div>
+          <!--box-content box-category--> 
+        </div>
+      </aside>
+      <!--col-right sidebar--> 
+    </div>
+    <!--row--> 
+  </div>
+  <!--container--> 
+</section>
+<!--main-container col2-left-layout--> 
+{% else %}
+  No Products Available
+{% endif %}
+
+{% endblock %}

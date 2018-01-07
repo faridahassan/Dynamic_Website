@@ -1,0 +1,105 @@
+{% extends '::adminbase.html.twig' %}
+{% block username %}{{user.username}}{% endblock %}
+{% block menue2active %} active {% endblock %}
+{% block menue21active %}
+	{% if items is not empty and items[0].parentid != NULL and items[0].parentid.id == 1  %}  active {% endif %} 
+{% endblock %}
+{% block menue22active %}
+	{% if items is not empty and items[0].parentid != NULL and items[0].parentid.id == 2  %}  active {% endif %} 
+{% endblock %}
+
+{% block title %}Products{% endblock %}
+{% block content %}
+<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+		
+			<h3 class="page-title">
+			Products 
+			</h3>
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="">Products</a>
+						{% if items is not empty and items[0].parentid != NULL  %}<i class="fa fa-angle-right"></i>{% endif %}
+					</li>
+					{% if items is not empty and items[0].parentid != NULL and items[0].parentid.parentid == NULL %}
+					<li>
+						{% if items is not empty%} <a href="">{{items[0].parentid.name}}</a> {% endif %}
+						{% if items is not empty and  items[0].parentid != NULL and items[0].parentid.parentid != NULL  %}
+						 <i class="fa fa-angle-right"></i>
+						{% endif %}
+					</li>
+					{% endif %}
+					{% if  items is not empty and items[0].parentid != NULL and items[0].parentid.parentid != NULL  %} 
+						<li>
+						{% if items is not empty%}<a href="">{{items[0].parentid.parentid.name}}</a>{% endif %}
+						<!--<i class="fa fa-angle-right"></i>-->
+					</li>
+					{% endif %}
+					
+					
+				</ul>
+				<div class="page-toolbar">
+						<div class="btn-group pull-right">
+							{% if items is not empty and items[0].parentid != NULL and items[0].parentid.parentid == NULL %}
+							<a href="{{path('admin_newproduct' , {'categoryid' : items[0].parentid.id } )}}" class="btn btn-circle green">
+							Add Category <i class="fa fa-plus"></i>
+					        </a>
+							
+							{% elseif items is not empty and items[0].parentid != NULL and items[0].parentid.parentid != NULL %}
+							<a href="{{path('admin_newproduct' , {'categoryid' : items[0].parentid.id } )}}" class="btn btn-circle green">
+							Add Product <i class="fa fa-plus"></i>
+							</a>
+						    {% elseif items is  empty and categoryid == 1 or items is  empty and categoryid == 2  %}
+						    	<a href="{{path('admin_newproduct' , {'categoryid' : categoryid } )}}" class="btn btn-circle green">
+							Add Category <i class="fa fa-plus"></i></a>
+					        {% else %}
+					        	<a href="{{path('admin_newproduct' , {'categoryid' : categoryid } )}}" class="btn btn-circle green">
+							Add Product <i class="fa fa-plus"></i>
+							</a>
+							{% endif %}
+						</div>
+					</div>
+				<div>
+					
+			    </div>
+			</div>
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+						<div class="row">
+							{% for item in items %}
+							<div class="col-sm-12 col-md-6">
+								<div class="thumbnail">
+									{% if item.images is not empty %}
+									<img src="{{asset('assets/images/')}}{{item.images[0].url}}" alt="" style="width: 50%; height: 200px;">
+									{% endif %}
+									<div class="caption">
+										<a href="{{path('admin_products' , {'categoryid' : item.id } )}}" title="{{item.name}}">
+									      <h3>{{item.name}}</h3></a>
+										
+										<p>
+											<a href="{{path('admin_editproduct' , {'productid' : item.id } )}}" class="btn blue">
+											Edit </a>
+											
+										</p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					
+											
+					
+					
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+<!-- END CONTENT -->
+
+{% endblock %}

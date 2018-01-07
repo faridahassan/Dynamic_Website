@@ -1,0 +1,31 @@
+admin_homepage:
+    path:     /admin/index
+    defaults: { _controller: AdminBundle:Page:index }
+
+admin_products:
+    path:     /admin/products/{categoryid}
+    defaults: { _controller: AdminBundle:Page:products }
+
+admin_newproduct:
+    path:     /admin/new/{categoryid}
+    defaults: { _controller: AdminBundle:Page:create }
+
+admin_editproduct:
+    path:     /admin/edit/{productid}
+    defaults: { _controller: AdminBundle:Page:edit }
+
+admin_event:
+    path:     /admin/event/{eventid}
+    defaults: { _controller: AdminBundle:Page:event }
+
+admin_events:
+    path:     /admin/events
+    defaults: { _controller: AdminBundle:Page:events }
+
+admin_newevent:
+    path:     /admin/newevent
+    defaults: { _controller: AdminBundle:Page:createevent }
+
+admin_editevent:
+    path:     /admin/editevent/{eventid}
+    defaults: { _controller: AdminBundle:Page:editevent }

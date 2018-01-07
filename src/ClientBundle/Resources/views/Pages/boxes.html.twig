@@ -1,0 +1,125 @@
+{% extends '::base.html.twig' %}
+{% block title %}Brands {% endblock %}
+{% block menu4 %} active {% endblock %}
+{% block content %}
+<div class="page-heading"  style="background-image: url({{asset('')}}assets/images/Wide/6.jpg);">
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a href="{{path('client_homepage')}}" title="Go to Home Page">Home</a> <span>—› </span> </li>
+            <li class="category1599"> <a  title="fruits">Brands</a>  </li>
+            
+          </ul>
+        </div>
+        <!--col-xs-12--> 
+      </div>
+      <!--row--> 
+    </div>
+    <!--container--> 
+  </div>
+  <div class="page-title">
+    <h2>Brands</h2>
+  </div>
+</div>
+<!--breadcrumbs--> 
+<!-- BEGIN Main Container col2-left -->
+<section class="main-container col2-left-layout bounceInUp animated"> 
+  <!-- For version 1, 2, 3, 8 --> 
+  <!-- For version 1, 2, 3 -->
+  <div class="container">
+    <div class="content">
+      {# <div class="col-main col-sm-12 col-sm-push-3 product-grid"> #}
+      <div class="pro-coloumn">
+        <article class="col-main">
+          <div class="toolbar">
+            <div class="page-title">
+             <h2>Brands</h2>
+            </div>
+           
+          </div>
+          <div class="category-products">
+            <ul class="products-grid">
+              
+              <li class="item col-lg-4 col-md-3 col-sm-4 col-xs-6">
+	                <div class="item-inner">
+		              <div class="item-img">
+		                <div class="item-img-info"><a><img src="{{asset('assets/images/Boxes/Orange/1.png')}}" alt="Retis lapen casen"></a>
+		                </div>
+		              </div>
+		              <div class="item-info">
+		                <div class="info-inner">
+		                   <div class="item-title"><a>El Saad</a> </div> 
+		                  <div class="item-content">
+		                    
+		                  </div>
+		                </div>
+		              </div>
+	                </div>
+               </li>
+               <li class="item col-lg-4 col-md-3 col-sm-4 col-xs-6">
+                  <div class="item-inner">
+                  <div class="item-img">
+                    <div class="item-img-info"><a><img src="{{asset('assets/images/Boxes/Orange/2.png')}}" alt="Retis lapen casen"></a>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                       <div class="item-title"><a>East Dream</a> </div> 
+                      <div class="item-content">
+                        
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+               </li>
+               <li class="item col-lg-4 col-md-3 col-sm-4 col-xs-6">
+                  <div class="item-inner">
+                  <div class="item-img">
+                    <div class="item-img-info"><a><img src="{{asset('assets/images/Boxes/Orange/4.png')}}" alt="Retis lapen casen"></a>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                       <div class="item-title"><a>Tommy</a> </div> 
+                      <div class="item-content">
+                        
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+               </li>
+               <li class="item col-lg-4 col-md-3 col-sm-4 col-xs-6">
+                  <div class="item-inner">
+                  <div class="item-img">
+                    <div class="item-img-info"><a ><img src="{{asset('assets/images/Boxes/Orange/4.png')}}" alt="Retis lapen casen"></a>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <div class="info-inner">
+                       <div class="item-title"><a>El Gliel</a> </div> 
+                      <div class="item-content">
+                        
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+               </li>
+
+             
+            </ul>
+          </div>
+        </article>
+        </div>
+        <!--	///*///======    End article  ========= //*/// --> 
+      {# </div> #}
+      
+      <!--col-right sidebar--> 
+    </div>
+    <!--row--> 
+  </div>
+  <!--container--> 
+</section>
+
+{% endblock %}

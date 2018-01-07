@@ -1,0 +1,67 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+   {{ form_errors(form) }}
+    
+   
+    <div class="control-group">
+        <div class="controls">
+         <label class="control-label visible-ie8 visible-ie9" for="user_registration_email">Email</label>
+           <div class="controls">
+                <div class="input-icon left">
+                        <i class="icon-envelope"></i>
+                      {{ form_widget(form.email, { 'attr': {'class': 'm-wrap placeholder-no-fix', 'placeholder': 'Email'|trans } }) }}
+                       {{ form_errors(form.email) }}
+                </div>
+        </div>
+        </div>
+    </div>
+   
+     
+    
+ 
+     <p>Enter your account details below:</p>
+     <div class="control-group">
+            <label for="user_registration_username" class="control-label visible-ie8 visible-ie9">Username</label>
+            <div class="controls">
+                    <div class="input-icon left">
+                            <i class="icon-user"></i>
+                            {{ form_widget(form.username, { 'attr': {'class': 'm-wrap placeholder-no-fix', 'placeholder': 'Username'|trans } }) }}
+                            {{ form_errors(form.username) }}
+                    </div>
+            </div>
+    </div>
+    <div class="control-group">
+            <label for="user_registration_plainPassword_first" class="control-label visible-ie8 visible-ie9">Password</label>
+            <div class="controls">
+                    <div class="input-icon left">
+                            <i class="icon-lock"></i>
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'm-wrap placeholder-no-fix', 'placeholder': 'Password'|trans } }) }}
+                        {{ form_errors(form.plainPassword.first) }}
+                    </div>
+            </div>
+    </div>
+    <div class="control-group">
+            <label for="user_registration_plainPassword_second" class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+            <div class="controls">
+                    <div class="input-icon left">
+                            <i class="icon-ok"></i>
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'm-wrap placeholder-no-fix', 'placeholder': 'Re-type Your Password'|trans } }) }}
+                        {{ form_errors(form.plainPassword.second) }}
+
+                    </div>
+            </div>
+    </div>
+   
+    <div class="form-actions">
+            <a id="register-back-btn" type="button" class="btn">
+            <i class="m-icon-swapleft"></i>  Back
+            </a>
+            <button value="{{ 'registration.submit'|trans }}" type="submit" id="register-submit-btn" class="btn green pull-right">
+            Sign Up <i class="m-icon-swapright m-icon-white"></i>
+            </button>            
+    </div>
+
+   
+    {{form_rest(form)}}
+</form>

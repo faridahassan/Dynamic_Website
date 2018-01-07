@@ -1,0 +1,40 @@
+client_homepage:
+    path:     /home
+    defaults: { _controller: ClientBundle:Page:index }
+
+client_about:
+    path:     /about
+    defaults: { _controller: ClientBundle:Page:about }
+
+client_products:
+    path:     /products/{categoryid}
+    defaults: { _controller: ClientBundle:Page:products }
+
+client_season:
+    path:     /season
+    defaults: { _controller: ClientBundle:Page:season }
+
+client_boxes:
+    path:     /boxes
+    defaults: { _controller: ClientBundle:Page:boxes }
+
+client_events:
+    path:     /events
+    defaults: { _controller: ClientBundle:Page:events }
+
+
+client_certificates:
+    path:     /certificates
+    defaults: { _controller: ClientBundle:Page:certificates }
+
+client_farms:
+    path:     /farms
+    defaults: { _controller: ClientBundle:Page:farms }
+
+client_contact:
+    path:     /contact
+    defaults: { _controller: ClientBundle:Page:contact }
+
+client_event:
+    path:     /event/{eventid}
+    defaults: { _controller: ClientBundle:Page:event }    

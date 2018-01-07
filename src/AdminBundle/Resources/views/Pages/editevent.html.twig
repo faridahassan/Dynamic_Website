@@ -1,0 +1,116 @@
+{% extends '::adminbase.html.twig' %}
+{% block username %}{{user.username}}{% endblock %}
+{% block menue3active %} active {% endblock %}
+{% block title %}Event Form{% endblock %}
+{% block content %}
+<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title">
+			Edit Event 
+			</h3>
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="{{path('admin_homepage')}}">Dashboard</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					
+					
+				</ul>
+				
+			</div>
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="portlet light bordered form-fit">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="icon-equalizer font-green-haze"></i>
+								<span class="caption-subject font-green-haze bold uppercase">Event Form</span>
+							</div>
+							
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form class="form-horizontal form-row-seperated" action="{{ path('admin_editevent', { 'eventid' : eventid } ) }}" method="post" {{ form_enctype(form) }} >
+								<div class="form-body">
+									<div class="form-group">
+										<label class="control-label col-md-3">Event Name</label>
+										<div class="col-md-9">
+											<!--<input type="text" placeholder="small" class="form-control"/>-->
+											{{ form_widget(form.name) }}
+											<span class="help-block">
+											Event Name </span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">Description</label>
+										<div class="col-md-9">
+											<!--<input type="text" placeholder="medium" class="form-control"/>-->
+											{{ form_widget(form.description) }}
+											<span class="help-block">
+											Briefly describe the event. </span>
+										</div>
+									</div>
+									
+									
+									<div class="form-group last">
+											<label class="control-label col-md-3">Images</label>
+											<div class="col-md-9">
+												{% for image in form.images %}
+												<div class="fileinput fileinput-new" data-provides="fileinput">
+													<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                        
+														{% if image is not empty and  image.url.vars.value != "empty.png"  %}
+														<img src="{{asset('assets/images/Events/')}}{{image.url.vars.value}}" alt=""/>
+													    {% else %}
+														<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>
+													    {% endif %}
+
+													</div>
+													<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+													</div>
+													<div>
+														{{ form_widget(image ,{ 'attr': { 'class':'default btn-file'|trans } }) }}
+														
+														<a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput">
+														Remove </a>
+													</div>
+												</div>
+												{% endfor %}
+												<div class="clearfix margin-top-10">
+													<span class="label label-danger">
+													NOTE! </span>
+													Image Size should be 800 x 800
+												</div>
+											</div>
+										</div>
+								</div>
+								<div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-3 col-md-9">
+											<button type="submit" class="btn green">Save </button>
+											<button type="button" class="btn default">Cancel</button>
+										</div>
+									</div>
+								</div>
+								{{ form_rest(form) }}
+							</form>
+							<!-- END FORM-->
+						</div>
+					</div>
+								
+					 
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+<!-- END CONTENT -->
+
+{% endblock %}

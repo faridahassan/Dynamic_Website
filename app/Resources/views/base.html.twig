@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title> El Saad | {% block title %}{% endblock %}</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+<meta name="description" content="Default Description">
+<meta name="keywords" content="fashion, store, E-commerce">
+<meta name="robots" content="*">
+<link rel="icon" href="#" type="image/x-icon">
+<link rel="shortcut icon" href="#" type="image/x-icon">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/font-awesome.css')}}" media="all">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/revslider.css')}}" >
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/owl.carousel.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/owl.theme.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/flexslider.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/jquery.bxslider.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/jquery.mobile-menu.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/style.css')}}" media="all">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/stylesheet/responsive.css')}}" media="all">
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700,800' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="initial-scale=1.0, width=device-width">
+{% block stylesheets %}{% endblock %}
+</head>
+<body>
+<div id="page">
+  <header>
+      <div class="header-banner">
+        <div class="assetBlock">
+          <div style="height: 20px; overflow: hidden;" id="slideshow">
+            <p style="display: block;"> GET READY FOR OUR FRESH <span>FRUITS </span> AND <span> VEGTABLES !</span> </p>
+            <p style="display: none;"> HURRY UP AND TRY OUR FRESH <span>FRUITS</span> AND <span> VEGTABLES</span> OF THE SEASON ! </p>
+          </div>
+         </div>
+      </div>
+      <div id="header">
+        <div class="header-container container">
+         <div class="row">
+          <div class="logo"> <a href="{{path('client_homepage')}}" title="El Saad">
+            <div><img src="{{asset('assets/images/logo.png')}}" alt="Flavours Store"></div>
+            </a> </div>
+          <div class="fl-nav-menu">
+           
+              <nav>
+                <div class="mm-toggle-wrap">
+                  <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label">Menu</span> </div>
+                </div>
+                <div class="nav-inner">
+                  <!-- BEGIN NAV -->
+                  <ul id="nav" class="hidden-xs">
+                    <li id="nav-home" class="mega-menu">
+                      <a id="home" class="level-top {% block menu1 %}{% endblock %}" onclick="activeButton()" href="{{path('client_homepage')}}"><span>Home</span></a>
+                    </li>
+                    <li class="mega-menu"> 
+                      <a class="level-top {% block menu2 %}{% endblock %}" href="{{path('client_about')}}"><span>About Us</span></a>
+                    </li>
+
+                    <li class="mega-menu"> <a class="level-top {% block menu3 %}{% endblock %}" href="{{path('client_products' , {'categoryid' : 0 } )}}"><span>Products</span></a> 
+                    </li>
+                     
+                    <li class="mega-menu"> 
+                      <a class="level-top {% block menu4 %}{% endblock %}" href="{{path('client_boxes')}}"><span>Brands</span></a>
+                    </li>
+
+                    <li class="mega-menu">
+                     <a class="level-top {% block menu5 %}{% endblock %}" href="{{path('client_events')}}"><span>Events</span></a>
+                    </li>
+                    <li class="mega-menu"> <a class="level-top {% block menu6 %}{% endblock %}" href="{{path('client_certificates')}}"><span>Certificates</span></a>
+                    </li>
+
+                    <li class="mega-menu">
+                     <a class="level-top {% block menu7 %}{% endblock %}" href="{{path('client_farms')}}"><span>El Saad Farms</span></a>
+                    </li>
+
+                    <li class="mega-menu">
+                     <a class="level-top {% block menu8 %}{% endblock %}" href="{{path('client_season')}}"><span>Fruits & Seasons</span></a>
+                    </li> 
+
+                    <li class="mega-menu"> 
+                      <a class="level-top {% block menu9 %}{% endblock %}" href="{{path('client_contact')}}"><span>Contact Us</span></a> 
+                    </li>
+
+                  </ul>
+                  <!--nav-->
+                  </div>
+                  </nav>
+            </div>
+            <!--row-->
+          </div>
+        
+        </div>
+        </div>  
+  </header>
+ {% block content %}{% endblock %}
+  
+  <footer>
+    <!-- BEGIN INFORMATIVE FOOTER -->
+    <div class="footer-inner">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-xs-12 col-lg-4">
+          <div class="co-info">
+              {# <div><a href="index.html"><img src="images/logo.png" alt="footer logo"></a></div> #}
+              <address>
+              <div> <span> <em class="icon-location-arrow"></em> KILO 58 CAIRO-ALEXANDRIA DESERT ROAD FRONT OF THE EUROPEAN COUNTRY SIDE - GIZA – EGYPT</span></div>
+              <div> <span> <em class="icon-mobile-phone"></em> Phone: +2 38921298  Fax: +2 38921291 </span></div>
+              <div> <em class="icon-envelope"></em><span>Email : info@ELSAADEST.COM</span></div>
+              </address>
+              <div class="social">
+                <ul class="link">
+                  <li class="fb pull-left"><a target="_blank" rel="nofollow" href="#" title="Facebook"></a></li>
+                 
+                </ul>
+              </div>
+            </div>
+            </div>
+            
+             <div class="col-sm-8 col-xs-12 col-lg-8">
+                <div class="footer-column">
+                    <h4>Information</h4>
+                    <ul class="links">
+                     
+                      <li><a title="About Us" href="{{path('client_about')}}">About Us</a></li>
+                      <li><a title="Contact Us" href="{{path('client_contact')}}">Contact Us</a></li>
+                      <li><a title="Our Products" href="{{path('client_products' , {'categoryid' : 0 } )}}">Products</a></li>
+                    </ul>
+                </div>
+             </div>
+         
+          <!--col-sm-12 col-xs-12 col-lg-8-->
+          <!--col-xs-12 col-lg-4-->
+        </div>
+        <!--row-->
+        
+      </div>
+      
+      <!--container-->
+    </div>
+    <!--footer-inner-->
+    
+    <div class="footer-middle">
+      <div class="container">
+        <div class="row">
+          <div class="row"> </div>
+        </div>
+        <!--row-->
+      </div>
+      <!--container-->
+    </div>
+    <!--footer-middle-->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-xs-12 coppyright">© 2017 El SAAD For Exporting Fruits and Vegtables. All Rights Reserved.</div>
+         
+        </div>
+        <!--row-->
+      </div>
+      <!--container-->
+    </div>
+    <!--footer-bottom-->
+    <!-- BEGIN SIMPLE FOOTER -->
+  </footer>
+  <!-- End For version 1,2,3,4,6 -->
+  
+</div>
+<!--page-->
+<!-- Mobile Menu-->
+<div id="mobile-menu">
+  <ul>
+    <li><div class="home"><a href="{{path('client_homepage')}}"><i class="icon-home"></i>Home</a> </div></li>
+    <li><a href="{{path('client_about')}}">About Us</a></li>
+    <li><a href="{{path('client_products' , {'categoryid' : 0 } )}}">Products</a></li>
+    <li><a href="{{path('client_boxes')}}">Boxes</a> </li>
+    <li><a href="{{path('client_contact')}}">Contact Us</a></li>   
+   
+  </ul>
+</div>
+
+<!-- JavaScript -->
+
+
+<!-- JavaScript -->
+
+
+
+<script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/common.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/jquery.flexslider.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/cloud-zoom.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/parallax.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/jquery.mobile-menu.min.js')}}"></script>
+
+
+{% block javascript %}{% endblock %}
+
+</body>
+</html>
